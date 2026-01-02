@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+.app{
+    background-color: white;
+    width:300px;
+    height: 500px;
+    border-radius: 20px;
+
+}
+
+.input{
+    width: 100%;
+    padding: 0px 20px;
+
+}
+
+.input p{
+    margin-top: 10px;
+}
+
+.input input{
+    width: 100%;
+    padding: 10px 0px;
+    border-radius: 10px;
+    border: 1px solid #a4a4a4;
+    padding-left: 10px;
+    outline: none;
+}
+
+.input select{
+    width: 100%;
+    padding: 10px 0px;
+    border-radius: 10px;
+    border: 1px solid #a4a4a4;
+    appearance: none;
+    padding-left: 10px;
+    outline: none;
+}
+
+.input button{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 0px;
+    border-radius: 10px;
+    background-color: #772FD3;
+    border: none;
+    color: white;
+    font-size: large;
+}
+
+.Conversor{
+    width: 250px;
+    margin: auto;
+    height: 210px;
+    border: 1px solid #772FD3;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+
+}
+
+.Conversor img{
+    width: 25px;
+    margin-top: 10px;
+    height: 25px;
+}
+
+.Conversor p{
+    margin: 5px 0px;
+}
+
+.valor1{
+    color: #772FD3;
+}
+
+.valor2{
+    color:#772FD3;
+}
+
+
+.imagem-fundo{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+
+.imagem-fundo img{
+    width: 100%;
+    height: 100vh;
+}
