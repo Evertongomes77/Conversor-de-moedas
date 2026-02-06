@@ -1,96 +1,79 @@
-const input = document.querySelector('.valor');
-const select=document.querySelector('.select');
+const select = document.querySelector('.select');
 
-const dolar = 5.48
-const euro=6.42
-const libra=7.31
-const pesos=0.30
+ async function converter(){
+    const input= document.querySelector('.input').value;
+    const real = document.querySelector('.a-converter');
+    const resultadoconvertido= document.querySelector('.resultconvertido');
 
-const valorreal = document.querySelector('.valor1');
-const valorconvertido = document.querySelector('.valor2');
+    const url="https://economia.awesomeapi.com.br/json/last/USD-BRL,BRL-GBP,EUR-BRL?token=b47bd8ee1fd4e05c541ec90d782e5f0d8fbcd0ad5e6f172ecc988e73975b67b6";
 
-const imagem=document.querySelector('.imagem-conversao');
-const textoconverter=document.getElementById('textoconverter');
+    const moedas= await fetch(url).then((response)=>{
+        return response.json();
+    });
 
+    const dolar= moedas.USDBRL.high
+    const euro= moedas.EURBRL.high
+    const libra= moedas.BRLGBP.high
 
-function mudou(){
-    if(select.value=='dolar'){
-         imagem.src="img/estados-unidos-da-america.png";
-         valorconvertido.innerHTML="$ 0.00"
-         textoconverter.innerHTML="Dólar americano"
+    if(select.value==='dolar'){
+        real.innerHTML=new Intl.NumberFormat("pt-BR",{
+            style:"currency",
+            currency:"BLR"
+        }).format(input);
+        const results= input/dolar
+
+        resultadoconvertido.innerHTML= new Intl.NumberFormat("en-us",{style:"currency",
+            currency:"USD"
+        }).format(results)
     }
-    else if(select.value=='euro'){
-        imagem.src="img/euro.png"
-        valorconvertido.innerHTML="£ 0.00"
-        textoconverter.innerHTML="Euro"
-    }
-    else if(select.value=='libra'){
-        imagem.src="img/libra.png"
-        textoconverter.innerHTML="Libra"
-        valorconvertido.innerHTML="£ 0.00"
-    }
-    else if(select.value=='pesos'){
-        imagem.src="img/peso-mexicano.png"
-        textoconverter.innerHTML="Pesos"
-    }
+    else if(select.value==="libra"){
+        real.innerHTML=new Intl.NumberFormat("pt-BR",{
+            style:"currency",
+            currency:"BLR"
+        }).format(input);
+        const results= input*libra
 
+        resultadoconvertido.innerHTML= new Intl.NumberFormat("en-GB",{
+            style:"currency",
+            currency:"GBP"
+        }).format(results);
+
+    }
+    else{
+         real.innerHTML=new Intl.NumberFormat("pt-BR",{
+            style:"currency",
+            currency:"BLR"
+        }).format(input);
+        const results= input/euro
+
+        resultadoconvertido.innerHTML= new Intl.NumberFormat("de-DE",{
+            style:"currency",
+            currency:"EUR"
+        }).format(results);
+    }
+}
+
+
+function mudarconversor(){
+    const imagemdocoversor= document.getElementById('imagemcovertido');
+    const textoconvertidos= document.querySelector('.textoconvertido')
+    const resultadoconvertido= document.querySelector('.resultconvertido');
+
+
+    if(select.value==="dolar"){
+        imagemdocoversor.src="img/estados-unidos-da-america.png";
+        textoconvertidos.innerHTML="Dólar americano"
+        resultadoconvertido.innerHTML="$0,00"
+    }
+    else if(select.value==="libra"){
+        imagemdocoversor.src="img/libra.png"
+        textoconvertidos.innerHTML="Libra"
+        resultadoconvertido.innerHTML="£ 0,00"
+    }
+    else{
+        imagemdocoversor.src="img/euro.png";
+        textoconvertidos.innerHTML="Euro"
+        resultadoconvertido.innerHTML="0,00 €"
+    }
     converter()
-}
-
-
-function converter() {
-
-    if(select.value=='dolar'){
-        const resultado = input.value / dolar;
-        valorreal.innerHTML = new Intl.NumberFormat("pt-br",{
-        style:"currency",
-        currency:"BRL"
-    }).format(input.value);
-
-    valorconvertido.innerHTML = new Intl.NumberFormat("en-us",{
-        style:"currency",
-        currency:"USD"
-    }).format(resultado);
-    }
-
-    else if(select.value=="euro"){
-
-        const resultado= input.value/ euro;
-        valorreal.innerHTML=new Intl.NumberFormat("pt-br",{
-        style:"currency",
-        currency:"BRL"
-    }).format(input.value);
-
-        valorconvertido.innerHTML= new Intl.NumberFormat("de-DE",{
-        style:"currency",
-        currency:"EUR"
-    }).format(resultado);
-}
-
-else if(select.value=="libra"){
-    const resultado=input.value/libra;
-    valorreal.innerHTML= innerHTML=new Intl.NumberFormat("pt-br",{
-        style:"currency",
-        currency:"BRL"
-    }).format(input.value);
-
-    valorconvertido.innerHTML= new Intl.NumberFormat("en-GB", {
-  style: "currency",
-  currency: "GBP"
-}).format(resultado);
-}
-
-else if(select.value=="pesos"){
-    const resultado=input.value/pesos;
-
-    valorreal.innerHTML= new Intl.NumberFormat("pt-br",{
-        style:"currency",
-        currency:"BRL"
-    }).format(input.value);
-
-    valorconvertido.innerHTML= new Intl.NumberFormat("es-MX",{
-        style:"currency",
-        currency:"MXN"
-    }).format(resultado)
-}
 }

@@ -8,44 +8,35 @@
 </head>
 <body>
     <div class="container">
-
+        <h1>Conversor de moedas</h1>
         <div class="app">
-            <div class="input">
-                <p>Converter de</p>
-                <select name= id="">
-                     <option value="" class="real">R$ Real brasileiro</option>
-                </select>
+            <p class="converter">Converter de</p>
+            <select>
+                <option value="real">R$ Real brasileiro</option>
+            </select>
+            <p class="converter">Converter para</p>
+            <select class="select" onchange="mudarconversor()">
+                <option value="dolar">US$ Dólar americano</option>
+                <option value="euro"">£ Euro</option>
+                <option value="libra">Libra</option>
+            </select>
 
-                <p>Converter para</p>
-                <select name="" id="" class="select" onchange="mudou()">
-                    <option value="dolar" class="dolar">US$ Dólar americano</option>
-                    <option value="euro" class="euro">€ euro</option>
-                    <option value="libra">Libras</option>
-                    <option value="pesos">Pesos</option>
-                </select>
-
-                <p>Valor</p>
-                <input type="number" placeholder="R$ 10.000" class="valor">
-                <button onclick="converter()">Converter</button>
-            </div>
-
-            <div class="Conversor">
-                <img src="img/brasilia.png" alt="bandeira brasil">
-                <p>real</p>
-                <h4 class="valor1">R$ 0,00</h4>
-
-                <img src="img/Vector.png" alt="vector">
-
-                <img src="img/estados-unidos-da-america.png" alt="bandeira estados unidos" class="imagem-conversao">
-                <p id="textoconverter">Dólar americano</p>
-                <h4 class="valor2">$ 0.00</h4>
-            </div>
+            <p class="converter">Valor</p>
+            <input type="number" placeholder="R$ 10.000,00" class="input">
+            <button onclick="converter()">Converter</button>
 
         </div>
-        <div class="imagem-fundo">
-            <img src="img/dinheiro.jpg" alt="Dólar">
-        </div>
+        <div class="local-convertido">
+            <img src="img/brasilia.png" alt="" class="bandeiras">
+            <p class="moedas">Real</p>
+            <p class="a-converter">R$0,0</p>
 
+            <img src="img/Vector.png" alt="" class="vector">
+
+            <img src="img/estados-unidos-da-america.png" alt="" class="bandeiras" id="imagemcovertido">
+            <p class="textoconvertido">Dólar americano</p>
+            <p class="resultconvertido">$0,00</p>
+        </div>
     </div>
 </body>
 <script src="script.js"></script>
